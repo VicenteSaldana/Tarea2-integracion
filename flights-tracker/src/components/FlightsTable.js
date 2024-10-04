@@ -3,7 +3,6 @@ import './FlightsTable.css';
 
 const FlightsTable = ({ flights, planes }) => {
   const flightsArray = Object.values(flights);
-  console.log(planes);
 
   flightsArray.sort((a, b) => {
     const depA = a.departure.name.toLowerCase();

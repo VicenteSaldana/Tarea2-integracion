@@ -298,7 +298,6 @@ const MapComponent = () => {
   };
 
   function getPlaneIcon(plane) {
-    console.log(plane.eventType);
     if (plane.eventType === 'take-off') return takeOffIcon;
     if (plane.eventType === 'landing') return landingIcon;
     if (plane.eventType === 'crashed') return crashedIcon;
