@@ -1,8 +1,9 @@
 import React from 'react';
 import './FlightsTable.css'; 
 
-const FlightsTable = ({ flights }) => {
+const FlightsTable = ({ flights, planes }) => {
   const flightsArray = Object.values(flights);
+  console.log(planes);
 
   flightsArray.sort((a, b) => {
     const depA = a.departure.name.toLowerCase();
@@ -20,36 +21,46 @@ const FlightsTable = ({ flights }) => {
 
   return (
     <div className="flights-table-container">
-      <h2>Tabla Informativa de Vuelos</h2>
-      <table className="flights-table">
-        <thead>
-          <tr>
-            <th>ID de Vuelo</th>
-            <th>Aeropuerto de Origen</th>
-            <th>Aeropuerto de Destino</th>
-          </tr>
-        </thead>
-        <tbody>
-          {flightsArray.map(flight => (
-            <tr key={flight.id}>
-              <td>{flight.id}</td>
-              <td>
-                {flight.departure.name} ({flight.departure.city.name}, {flight.departure.city.country.name})
-              </td>
-              <td>
-                {flight.destination.name} ({flight.destination.city.name}, {flight.destination.city.country.name})
-              </td>
+    <h2>Información de Vuelos</h2>
+    <table className="flights-table">
+      <thead>
+        <tr>
+          <th>Vuelo ID</th>
+          <th>Aeropuerto de Origen</th>
+          <th>Ciudad de Origen</th>
+          <th>País de Origen</th>
+          <th>Aeropuerto de Destino</th>
+          <th>Ciudad de Destino</th>
+          <th>País de Destino</th>
+          <th>Estado</th>
+          <th>ETA (horas)</th>
+          <th>Capitán</th>
+        </tr>
+      </thead>
+      <tbody>
+        {flightsArray.map(flight => {
+          const flightId = flight.id;
+          const plane = planes[flightId];
+
+          return (
+            <tr key={flightId}>
+              <td>{flightId}</td>
+              <td>{flight.departure.name}</td>
+              <td>{flight.departure.city.name}</td>
+              <td>{flight.departure.city.country.name}</td>
+              <td>{flight.destination.name}</td>
+              <td>{flight.destination.city.name}</td>
+              <td>{flight.destination.city.country.name}</td>
+              <td>{plane ? plane.status : 'Desconocido'}</td>
+              <td>{plane ? plane.eta.toFixed(2) : 'N/A'}</td>
+              <td>{plane ? plane.captain : 'N/A'}</td>
             </tr>
-          ))}
-          {flightsArray.length === 0 && (
-            <tr>
-              <td colSpan="6" style={{ textAlign: 'center' }}>No hay vuelos disponibles actualmente.</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+);
 };
 
 export default FlightsTable;

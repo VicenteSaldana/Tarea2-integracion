@@ -422,7 +422,7 @@ const MapComponent = () => {
       </MapContainer>
 
       {/* Tabla Informativa de Vuelos */}
-      <FlightsTable flights={flights} />
+      <FlightsTable flights={flights} planes={planes}/>
 
       {/* Chat */}
       <div className="chat-container" style={styles.chatContainer}>
@@ -458,7 +458,7 @@ const MapComponent = () => {
 const styles = {
   chatContainer: {
     position: 'fixed',
-    bottom: '20px',
+    top: '20px',
     right: '20px',
     width: '300px',
     maxHeight: '400px',
