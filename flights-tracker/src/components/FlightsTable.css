@@ -1,0 +1,66 @@
+.flights-table-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 300px; 
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    z-index: 1000; 
+  }
+
+  .flights-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .flights-table thead {
+    background-color: #e6f7ff;
+    position: sticky;
+    top: -20px; 
+  }
+  
+  .flights-table th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #91d5ff;
+    color: #333;
+  }
+  
+  .flights-table tbody tr {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .flights-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .flights-table tbody tr:hover {
+    background-color: #e6f7ff;
+  }
+  
+  .flights-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #555;
+  }
+  
+  .flights-table td strong {
+    color: #333;
+  }
+  
+  @media (max-width: 600px) {
+    .flights-table-container {
+      padding: 10px;
+      margin: 10px;
+    }
+  
+    .flights-table th, .flights-table td {
+      padding: 8px;
+      font-size: 12px;
+    }
+  }
